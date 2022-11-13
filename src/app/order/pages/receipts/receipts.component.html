@@ -1,0 +1,31 @@
+<section class="container receipt">
+  <h3>Facture client</h3>
+  <table>
+    <thead>
+    <tr>
+      <th>Quantité</th>
+      <th>Produit</th>
+      <th>Prix Unitaire</th>
+      <th>Prix Total TTC</th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let order of orders">
+        <td>{{order.quantity}}</td>
+        <td>{{order.product.name}} {{order.product.isImport ? ' importé(e)s' : ''}}</td>
+        <td>{{order.product.price | currency:'EUR'}}</td>
+        <td>{{order.product.price | kataCurrency: order.tax : order.quantity}}</td>
+      </tr>
+    </tbody>
+    <tfoot class="footer-text-ml">
+      <tr>
+        <th colspan="3">Montant des taxes</th>
+        <td>{{totalTax | currency:'EUR'}}</td>
+      </tr>
+      <tr>
+        <th colspan="3">Total</th>
+        <td>{{priceTTC | currency:'EUR'}}</td>
+      </tr>
+    </tfoot>
+  </table>
+</section>

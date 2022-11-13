@@ -1,0 +1,66 @@
+/* You can add global styles to this file, and also import other style files */
+
+select {
+  font-size: .9rem;
+  padding: 2px 5px;
+}
+
+input[type="text"],input[type="number"],input[type="checkbox"] {
+  font-size: .9rem;
+  padding: 2px 5px;
+}
+
+.is-invalid {
+  border: none;
+  outline: 2px solid red;
+  border-radius: 5px;
+}
+
+.button {
+  background-color:#04AA6D; /* Green */
+  border: none;
+  color: white;
+  padding: 12px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.button-receipt {
+  border-radius: 12px;
+  float: right;
+}
+
+.error {
+  color: red;
+  font-size: 14px
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.container {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 60em;
+  font-size: 16px
+}
+
+.column {
+  float: left;
+  background-color: #fff;
+  width: 17%;
+  margin-left: 3%;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
