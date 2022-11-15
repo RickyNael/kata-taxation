@@ -6,12 +6,9 @@ import {RouterService} from "../../../order/services/router/router.service";
   templateUrl: './nav-bar.component.html',
   styleUrls: ['./nav-bar.component.scss']
 })
-export class NavBarComponent implements OnInit {
+export class NavBarComponent {
 
   constructor(private routerService: RouterService) { }
-
-  ngOnInit(): void {
-  }
 
   gotoHome(): void {
     this.routerService.goto('');

@@ -7,11 +7,4 @@ import {Order} from "../../models/order.model";
 export class ShareService {
   public orders :Order[] = [];
   constructor() { }
-
-  set setOrders(val: Order[]) {
-    this.orders = val;
-  }
-  get getOrders(): Order[]{
-    return this.orders;
-  }
 }

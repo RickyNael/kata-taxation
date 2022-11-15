@@ -1,5 +1,5 @@
-import { Pipe, PipeTransform } from '@angular/core';
-import {OrderUtils} from "../../order/utils/order-utils";
+import {Pipe, PipeTransform} from '@angular/core';
+import {OrderUtils} from "../utils/order-utils";
 
 @Pipe({
   name: 'kataCurrency'

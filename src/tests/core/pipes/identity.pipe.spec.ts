@@ -7,8 +7,8 @@ describe('IdentityPipe', () => {
   });
 
   it('#tranform should return value + 1', () => {
-      const pipe = new IdentityPipe();
-      expect(pipe.transform(0)).toEqual(1);
-      expect(pipe.transform(1)).toEqual(2);
-    });
+    const pipe = new IdentityPipe();
+    expect(pipe.transform(0)).toEqual(1);
+    expect(pipe.transform(1)).toEqual(2);
+  });
 });

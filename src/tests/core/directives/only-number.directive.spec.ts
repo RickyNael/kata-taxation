@@ -7,11 +7,13 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {BrowserDynamicTestingModule} from "@angular/platform-browser-dynamic/testing";
 import {MockAnimationDriver} from "@angular/animations/browser/testing";
+import {async} from "rxjs";
 
 describe('OnlyNumberDirective', () => {
   let directive: OnlyNumberDirective;
   let inputEl: DebugElement;
   let fixture: ComponentFixture<OrdersComponent>;
+  let component: OrdersComponent;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -27,10 +29,15 @@ describe('OnlyNumberDirective', () => {
     });
     directive = TestBed.inject(OnlyNumberDirective);
     fixture = TestBed.createComponent(OrdersComponent);
-    inputEl = fixture.debugElement.query(By.all());
+    component = fixture.componentInstance;
+    inputEl = fixture.debugElement.query(By.directive(OnlyNumberDirective));
   });
 
   it('should create an instance', () => {
     expect(directive).toBeTruthy();
+  });
+
+  it('should convert float to integer value', () => {
+    fixture.detectChanges();
   });
 });

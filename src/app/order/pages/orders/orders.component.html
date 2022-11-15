@@ -2,21 +2,14 @@
   <form [formGroup]="orderForm">
     <div>
       <h3>Ajoutez des produits et générez votre facture!</h3>
-      <div>
-        <label>Nombre de produits</label>
-        <input min="0" type="number" formControlName="numberOfProducts" (change)="onChangeProductsNumber()"
-               [ngClass]="{ 'is-invalid': isOrderFormSubmitted && orderForm.controls['numberOfProducts'].errors }"/>
-        <div class="error" *ngIf="isOrderFormSubmitted && orderForm.controls['numberOfProducts'].errors">Nombre Produit
-          Obligatoire
-        </div>
-      </div>
       <div *ngFor="let order of orderFormGroups; let i = index">
-        <h5 class="card-title">Produit {{i | identity}}</h5>
+        <h4 class="card-title">Produit {{i | identity}}</h4>
         <div class="row" [formGroup]="order" *ngIf="order">
           <ng-container formGroupName="product">
             <div class="column">
-              <label [for]="'category'+i">Catégorie</label>
-              <select [id]="'category'+i" formControlName="category" *ngIf="(categories$ | async) as categories"
+              <label [for]="'category' | elementId: i">Catégorie</label>
+              <select [id]="'category' | elementId: i" formControlName="category"
+                      *ngIf="(categories$ | async) as categories"
                       [ngClass]="{ 'is-invalid': isOrderFormSubmitted && order.get('product.category')?.errors }">
                 <option value="">Catégorie du produit</option>
                 <option *ngFor="let category of categories" [ngValue]="category">{{category.name}}</option>
@@ -26,25 +19,25 @@
               </div>
             </div>
             <div class="column">
-              <input type="checkbox" [id]="'import'+i" formControlName="isImport">
-              <label [id]="'import'+i"> Importé</label>
+              <input type="checkbox" [id]="'import' | elementId: i" formControlName="isImport">
+              <label [for]="'import' | elementId: i"> Importé</label>
             </div>
             <div class="column">
-              <label [for]="'name'+i">Nom</label>
-              <input type="text" [id]="'name'+i" formControlName="name"
+              <label [for]="'name' | elementId: i">Nom</label>
+              <input type="text" [id]="'name' | elementId: i" formControlName="name"
                      [ngClass]="{ 'is-invalid': isOrderFormSubmitted && order.get('product.name')?.errors }"/>
               <div class="error" *ngIf="isOrderFormSubmitted && order.get('product.name')?.errors">
                 <span
                   *ngIf="order.get('product.name')?.errors?.['required']">Nom Obligatoire</span>
                 <span
-                  *ngIf="order.get('product.name')?.errors?.['minlength']">Doit avoir au moins 2 caractères</span>
+                  *ngIf="order.get('product.name')?.errors?.['minlength']">{{nameMinCharacters}}</span>
                 <span
-                  *ngIf="order.get('product.name')?.errors?.['maxlength']">Doit avoir au plus 50 caractères</span>
+                  *ngIf="order.get('product.name')?.errors?.['maxlength']">{{nameMaxCharacters}}</span>
               </div>
             </div>
             <div class="column">
-              <label [for]="'price'+i">Prix</label>
-              <input min="0" type="number" [id]="'price'+i" formControlName="price"
+              <label [for]="'price' | elementId: i">Prix</label>
+              <input min="0" type="number" [id]="'price' | elementId: i" formControlName="price"
                      [ngClass]="{ 'is-invalid': isOrderFormSubmitted && order.get('product.price')?.errors }"/>
               <div class="error" *ngIf="isOrderFormSubmitted && order.get('product.price')?.errors">
                 <span
@@ -53,17 +46,21 @@
             </div>
           </ng-container>
           <div class="column">
-            <label [for]="'quantity'+i">Quantité</label>
-            <input OnlyNumber min="0" type="number" [id]="'quantity'+i" formControlName="quantity" class="onlyNumber"
+            <label [for]="'quantity' | elementId: i">Quantité</label>
+            <input appOnlyNumber min="0" type="number" [id]="'quantity' | elementId: i" formControlName="quantity"
                    [ngClass]="{ 'is-invalid': isOrderFormSubmitted && order.get('quantity')?.errors }"/>
             <div class="error" *ngIf="isOrderFormSubmitted && order.get('quantity')?.errors">
               <span
                 *ngIf="order.get('quantity')?.errors?.['required']">Quantité Obligatoire</span>
             </div>
           </div>
+          <div class="column">
+            <button class="button button-remove" (click)="removeProductLine(i)">-</button>
+          </div>
         </div>
       </div>
       <hr>
+      <button class="button button-add" (click)="addNewProductLine()">+ Ajouter Produit</button>
       <div>
         <button class="button button-receipt" type="submit" (click)="submitForm(orderForm)">Générer Facture</button>
       </div>

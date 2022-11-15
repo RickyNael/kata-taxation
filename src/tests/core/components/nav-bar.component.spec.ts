@@ -22,6 +22,6 @@ describe('NavBarComponent', () => {
   it('#Nav should render KATA', () => {
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('nav')?.textContent).toContain('KATA');
+    expect(compiled.querySelector('nav')?.textContent).toContain('KATA TAXATION');
   });
 });

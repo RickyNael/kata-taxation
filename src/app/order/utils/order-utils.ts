@@ -1,4 +1,5 @@
-import { Order } from "../models/order.model";
+import {Order} from "../models/order.model";
+import {ROUND_SUP_NUMBER} from "../constants/order.const";
 
 export class OrderUtils {
 
@@ -9,7 +10,7 @@ export class OrderUtils {
   }
 
   public static totalTax(tax: number, isImport: boolean): number {
-    return tax + (isImport ? 5 : 0);
+    return tax + (isImport ? ROUND_SUP_NUMBER : 0);
   }
 
   public static roundElement(element: number): number {
@@ -17,12 +18,10 @@ export class OrderUtils {
     let numberAfterDecimal = Math.round((element % 1) * 100);
     if (numberAfterDecimal > 0) {
       if (numberAfterDecimal < 10) {
-        numberAfterDecimal = Math.floor(numberAfterDecimal/5) > 1 ? 10 : 5;
+        numberAfterDecimal = Math.floor(numberAfterDecimal / ROUND_SUP_NUMBER) > 1 ? 10 : ROUND_SUP_NUMBER;
       } else {
-        const remainder = numberAfterDecimal%5;
-        if (remainder != 0) {
-          numberAfterDecimal = (numberAfterDecimal - remainder) + 5;
-        }
+        const remainder = numberAfterDecimal % ROUND_SUP_NUMBER;
+        numberAfterDecimal = remainder != 0 ? (numberAfterDecimal - remainder) + ROUND_SUP_NUMBER : numberAfterDecimal;
       }
     }
     return numberBeforeDecimal + (numberAfterDecimal / 100);

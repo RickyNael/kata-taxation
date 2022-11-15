@@ -1,4 +1,4 @@
-import {KataCurrencyPipe} from "../../../app/core/pipes/kata-currency.pipe";
+import {KataCurrencyPipe} from "../../../app/order/pipes/kata-currency.pipe";
 
 describe('KataCurrencyPipe', () => {
   it('create an instance', () => {

@@ -15,7 +15,7 @@ describe('OrderUtils', () => {
     expect(OrderUtils.totalTax(0, false)).toEqual(0);
   });
 
-  it('#roundElement should create tax with centime + 5', () => {
+  it('#roundElement should return tax with centime +5 superior', () => {
     expect(OrderUtils.roundElement(0.99)).toEqual(1);
     expect(OrderUtils.roundElement(0.0455)).toEqual(0.05);
     expect(OrderUtils.roundElement(1)).toEqual(1);
@@ -24,5 +24,6 @@ describe('OrderUtils', () => {
     expect(OrderUtils.roundElement(1.67)).toEqual(1.7);
     expect(OrderUtils.roundElement(1.27)).toEqual(1.3);
     expect(OrderUtils.roundElement(1.23)).toEqual(1.25);
+    expect(OrderUtils.roundElement(11.875)).toEqual(11.90);
   });
 });
