@@ -20,6 +20,5 @@ export class ReceiptsComponent implements OnInit {
       this.totalTax += OrderUtils.roundElement(order.tax) * order.quantity;
       this.priceTTC += (order.product.price + OrderUtils.roundElement(order.tax)) * order.quantity;
     });
-    // this.totalTax = OrderUtils.roundElement(this.totalTax);
   }
 }

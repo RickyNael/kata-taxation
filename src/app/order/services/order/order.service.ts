@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import {filter, first, map, Observable} from 'rxjs';
+import {Observable} from 'rxjs';
 import {HttpClient} from "@angular/common/http";
-import {Product} from "../../models/product.model";
 import {ShareService} from "../share/share.service";
 import {Category} from "../../models/category.model";
 import {Order} from "../../models/order.model";

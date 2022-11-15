@@ -7,11 +7,13 @@ import {CoreModule} from "./core/core.module";
 import {HttpClientModule} from "@angular/common/http";
 import {registerLocaleData} from "@angular/common";
 import localeFr from '@angular/common/locales/fr';
+import { NotFoundComponent } from './error/not-found/not-found.component';
 registerLocaleData(localeFr);
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

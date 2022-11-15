@@ -1,0 +1,49 @@
+.mainbox {
+  margin: auto;
+  height: 90vh;
+  width: 90vh;
+  position: relative;
+}
+
+.err {
+  color: #333;
+  font-size: 11rem;
+  position:absolute;
+  left: 20%;
+  top: 8%;
+}
+
+.err1 {
+  color: #333;
+  font-size: 11rem;
+  position:absolute;
+  left: 42%;
+  top: 8%;
+}
+
+.err2 {
+  color: #333;
+  font-size: 11rem;
+  position:absolute;
+  left: 68%;
+  top: 8%;
+}
+
+.msg {
+  text-align: center;
+  font-size: 1.6rem;
+  position:absolute;
+  left: 16%;
+  top: 45%;
+  width: 75%;
+}
+
+a {
+  text-decoration: none;
+  color: #04AA6D;
+  cursor: pointer;
+}
+
+a:hover {
+  text-decoration: underline;
+}
